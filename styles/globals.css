@@ -21,8 +21,12 @@
         @apply block rounded-md px-6 py-3 w-full text-white bg-neutral-700 appearance-none focus:border-2 focus:border-red-500 focus:outline-none focus:ring-0;
     }
 
+    .sign-in-input:placeholder-shown + label {
+        @apply top-1/2;
+    }
+
     .sign-in-input + label {
-        @apply absolute text-zinc-400 left-5 top-1/2 -translate-y-1/2 transition-all px-1;
+        @apply absolute text-zinc-400 left-5 top-0 -translate-y-1/2 transition-all px-1;
     }
 
     .sign-in-input:focus + label {
