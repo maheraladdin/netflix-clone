@@ -1,5 +1,5 @@
 import NextAuth from "next-auth";
-import Credentials from "next-auth/providers/credentials";
+import CredentialsProvider from "next-auth/providers/credentials";
 import prismaDb from "@/lib/prisma-db";
 import {compare} from "bcrypt";
 import FacebookProvider from "next-auth/providers/facebook";
@@ -23,7 +23,7 @@ export default NextAuth({
             clientId: process.env.GOOGLE_CLIENT_ID || "",
             clientSecret: process.env.GOOGLE_CLIENT_SECRET || ""
         }),
-        Credentials({
+        CredentialsProvider({
             id: 'credentials',
             name: `Credentials`,
             credentials: {
