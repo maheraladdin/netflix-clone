@@ -8,6 +8,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
         const {name, email, password} = req.body;
 
+        if(!name || !email || !password) return res.status(422).json({message: "Invalid input"});
+
         const isEmailUnique = await prismaDb.user.findUnique({
             where: {
                 email
@@ -24,9 +26,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 email,
                 password: hashedPassword,
                 image: "",
-                email_verified: new Date()
+                emailVerified: new Date()
             }
         });
+
+        res.status(201).json({message: "User created successfully", user});
+
     } catch (error) {
         console.log(error);
     }

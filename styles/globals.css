@@ -47,4 +47,8 @@
     .sign-in-input:focus + label {
         @apply text-red-500 top-0 bg-gradient-to-b from-transparent from-50% via-neutral-700 via-50% to-neutral-700 to-100% text-sm;
     }
+
+    .icon-container {
+        @apply w-10 h-10 bg-white flex justify-center items-center rounded-full hover:opacity-80 transition;
+    }
 }

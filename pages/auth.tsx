@@ -1,60 +1,22 @@
 import Image from "next/image";
-import {FieldErrors, useForm} from "react-hook-form";
-import * as yup from "yup";
-import {yupResolver} from "@hookform/resolvers/yup";
 import {DevTool} from "@hookform/devtools";
-import {useRouter} from "next/router";
-import {ParsedUrlQuery} from "querystring";
-import {useCallback} from "react";
-import axios from "axios";
+import {FcGoogle} from "react-icons/fc";
+import {FaFacebook} from "react-icons/fa";
+import useAuthForm from "@/hooks/auth-form-hook";
 
-type formValues = {
-    name?: string,
-    email: string,
-    password: string
-}
-
-const schema = yup.object({
-    name: yup.string().optional().min(4),
-    email: yup.string().email().required(),
-    password: yup.string().min(8).required()
-})
 
 export default function Auth() {
-    const router = useRouter();
-    const {formType}: ParsedUrlQuery = router.query;
-
-    const {register, control, handleSubmit, formState: {errors}, getValues} = useForm<formValues>({
-        mode: "onChange",
-        resolver: yupResolver(schema)
-    });
-
-    const onSubmit = (data: formValues) => {
-        console.log(data);
-    }
-
-    const onError = (errors: FieldErrors<formValues>) => {
-        for (const [_, error] of Object.entries(errors)) {
-            console.log(error.message);
-        }
-    }
-
-    const toggleFormType = async () => {
-        router.query.formType = formType === "sign-in" ? "sign-up" : "sign-in";
-        await router.replace({query: router.query});
-    }
-
-    const signUp = useCallback(async () => {
-        console.log(getValues());
-        try {
-            await axios.post("/api/register", {
-                ...getValues()
-            });
-        } catch (e) {
-            console.log(e);
-        }
-    },[])
-
+    const {
+        register,
+        control,
+        handleSubmit,
+        errors,
+        onSubmit,
+        onError,
+        toggleFormType,
+        signIn,
+        formType
+    } = useAuthForm();
 
     return (
         <main>
@@ -95,6 +57,26 @@ export default function Auth() {
                     <button className={"bg-red-600 hover:bg-red-700 transition text-white rounded-md py-3"}>
                         {formType === "sign-in" ? "Sign in" : "Sign up"}
                     </button>
+
+                    <div className={"flex gap-4 justify-center"}>
+                        <div
+                            onClick={_ => signIn("google", {
+                                callbackUrl: "/",
+                            })}
+                            role={"button"} className={"icon-container"}>
+                            <FcGoogle size={"30"}/>
+                        </div>
+                        <div
+                            onClick={_ => signIn("facebook", {
+                                callbackUrl: "/",
+                            })}
+                            role={"button"}
+                            className={"icon-container"}
+                        >
+                            <FaFacebook color={"#4267B2"} size={"30"}/>
+                        </div>
+                    </div>
+
                     <p className={"text-neutral-700 flex gap-2"}>
                         {
                             formType === "sign-in" ? (
