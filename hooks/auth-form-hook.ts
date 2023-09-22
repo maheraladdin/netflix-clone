@@ -14,10 +14,12 @@ type formValues = {
 }
 
 const schema = yup.object({
-    name: yup.string().optional().min(4),
+    name: yup.string().optional(),
     email: yup.string().email().required(),
     password: yup.string().min(8).required()
 });
+
+const callbackUrl = "/profiles";
 
 export default function useAuthForm() {
     const router = useRouter();
@@ -43,12 +45,10 @@ export default function useAuthForm() {
     const signInHandler = useCallback(async () => {
         try {
             await signIn("credentials", {
-                redirect: false,
                 email: getValues("email"),
                 password: getValues("password"),
-                callbackUrl: "/",
+                callbackUrl,
             });
-            await router.push("/");
         } catch (e) {
             console.log(e);
         }
@@ -78,7 +78,8 @@ export default function useAuthForm() {
         onError,
         toggleFormType,
         signIn,
-        formType
+        formType,
+        callbackUrl
     }
 
 }

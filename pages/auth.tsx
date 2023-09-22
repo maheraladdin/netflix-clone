@@ -15,7 +15,8 @@ export default function Auth() {
         onError,
         toggleFormType,
         signIn,
-        formType
+        formType,
+        callbackUrl
     } = useAuthForm();
 
     return (
@@ -61,14 +62,14 @@ export default function Auth() {
                     <div className={"flex gap-4 justify-center"}>
                         <div
                             onClick={_ => signIn("google", {
-                                callbackUrl: "/",
+                                callbackUrl,
                             })}
                             role={"button"} className={"icon-container"}>
                             <FcGoogle size={"30"}/>
                         </div>
                         <div
                             onClick={_ => signIn("facebook", {
-                                callbackUrl: "/",
+                                callbackUrl,
                             })}
                             role={"button"}
                             className={"icon-container"}
