@@ -5,15 +5,17 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {DevTool} from "@hookform/devtools";
 import {useRouter} from "next/router";
 import {ParsedUrlQuery} from "querystring";
+import {useCallback} from "react";
+import axios from "axios";
 
 type formValues = {
-    username?: string,
+    name?: string,
     email: string,
     password: string
 }
 
 const schema = yup.object({
-    username: yup.string().optional().min(4),
+    name: yup.string().optional().min(4),
     email: yup.string().email().required(),
     password: yup.string().min(8).required()
 })
@@ -22,7 +24,7 @@ export default function Auth() {
     const router = useRouter();
     const {formType}: ParsedUrlQuery = router.query;
 
-    const {register, control, handleSubmit, formState: {errors}} = useForm<formValues>({
+    const {register, control, handleSubmit, formState: {errors}, getValues} = useForm<formValues>({
         mode: "onChange",
         resolver: yupResolver(schema)
     });
@@ -42,6 +44,17 @@ export default function Auth() {
         await router.replace({query: router.query});
     }
 
+    const signUp = useCallback(async () => {
+        console.log(getValues());
+        try {
+            await axios.post("/api/register", {
+                ...getValues()
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    },[])
+
 
     return (
         <main>
@@ -55,14 +68,14 @@ export default function Auth() {
                 </h2>
                 <form onSubmit={handleSubmit(onSubmit, onError)} className={"relative flex flex-col gap-8 w-full"}>
                     {
-                        formType === "sign-up" &&
+                        formType !== "sign-in" &&
                         <div className={"relative flex flex-col gap-4"}>
                             <div className={"relative flex flex-col gap-4"}>
-                                <input id={"username"} className={"sign-in-input"} type="text"
-                                       placeholder={" "} {...register("username")}/>
-                                <label htmlFor="username"> Username </label>
+                                <input id={"name"} className={"sign-in-input"} type="text"
+                                       placeholder={" "} {...register("name")}/>
+                                <label htmlFor={"name"}> Username </label>
                             </div>
-                            <p className={"text-red-900"}>{errors.username?.message}</p>
+                            <p className={"text-red-900"}>{errors.name?.message}</p>
                         </div>
                     }
                     <div className={"relative flex flex-col gap-4"}>
