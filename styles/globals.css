@@ -51,4 +51,8 @@
     .icon-container {
         @apply w-10 h-10 bg-white flex justify-center items-center rounded-full hover:opacity-80 transition;
     }
+
+    .nav-item {
+        @apply select-none lowercase first-letter:capitalize text-white hover:text-gray-300 transition text-center w-fit;
+    }
 }
