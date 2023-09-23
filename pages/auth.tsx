@@ -1,5 +1,5 @@
 import Image from "next/image";
-import {DevTool} from "@hookform/devtools";
+// import {DevTool} from "@hookform/devtools";
 import {FcGoogle} from "react-icons/fc";
 import {FaFacebook} from "react-icons/fa";
 import useAuthForm from "@/hooks/auth-form-hook";
@@ -8,7 +8,7 @@ import useAuthForm from "@/hooks/auth-form-hook";
 export default function Auth() {
     const {
         register,
-        control,
+        // control,
         handleSubmit,
         errors,
         onSubmit,
@@ -21,7 +21,7 @@ export default function Auth() {
 
     return (
         <main>
-            <DevTool control={control} placement={"top-right"}/>
+            {/*<DevTool control={control} placement={"top-right"}/>*/}
             <div className={"relative h-screen w-screen bg-black sm:bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-cover bg-fixed sm:brightness-50"}>
                 <Image className={"fixed top-5 left-5 sm:left-12 scale-50 sm:scale-100 origin-top-left"} src={"/images/logo.png"} alt={"netflix logo"} width={192} height={51.9}/>
             </div>

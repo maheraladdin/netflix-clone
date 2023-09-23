@@ -1,27 +1,42 @@
+import {signOut} from "next-auth/react";
 
 export const navItems = [
     {
         name: 'Home',
-        path: '/'
+        path: '/',
+        func: () => {},
     },
     {
         name: 'Series',
-        path: '/series'
+        path: '/series',
+        func: () => {}
     },
     {
         name: 'Films',
-        path: '/films'
+        path: '/films',
+        func: () => {}
     },
     {
         name: 'New & Popular',
-        path: '/new-and-popular'
+        path: '/new-and-popular',
+        func: () => {}
     },
     {
         name: 'My List',
-        path: '/my-list'
+        path: '/my-list',
+        func: () => {}
     },
     {
         name: 'Browse by languages',
-        path: '/browse-by-languages'
+        path: '/browse-by-languages',
+        func: () => {}
     }
 ];
+
+export const accountItems = [
+    {
+        name: 'Sign Out from Netflix',
+        path: '/sign-out',
+        func: () => signOut({callbackUrl: '/'})
+    }
+]
