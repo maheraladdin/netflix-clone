@@ -7,6 +7,7 @@ import {navItems, accountItems} from "@/lib/data";
 import OverlayMenu from "@/components/overlay-menu";
 import Navbar from "@/components/navbar";
 import useOverlayMenu from "@/hooks/overlay-menu-hook";
+import BillBoard from "@/components/bill-board";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,9 +27,9 @@ export default function Home() {
                 <title>Netflix Clone</title>
                 <meta name={"description"} content={"Netflix Clone"}/>
             </Head>
-            <main className={inter.className}>
-                <Navbar toggleBrowseMenu={toggleBrowseMenu} toggleAccountMenu={toggleAccountMenu}/>
-
+            <main className={`${inter.className} relative`}>
+                <Navbar toggleBrowseMenu={toggleBrowseMenu} toggleAccountMenu={toggleAccountMenu} />
+                <BillBoard />
             </main>
             <OverlayMenu visible={visibleBrowse} toggleMenu={toggleBrowseMenu} navItems={navItems}/>
             <OverlayMenu visible={visibleAccount} toggleMenu={toggleAccountMenu} navItems={accountItems} account={user?.name || user?.user?.name}/>
