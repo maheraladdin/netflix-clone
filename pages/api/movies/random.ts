@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (req.method !== "GET") return res.status(405).json({message: "Method not allowed"});
 
     try {
-        await serverAuth(req);
+        await serverAuth(req,res);
         const numberOfMovies = await prismaDb.movie.count();
         const randomMovie = await prismaDb.movie.findFirst({
             skip: Math.floor(Math.random() * numberOfMovies)
