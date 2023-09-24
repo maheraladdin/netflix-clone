@@ -8,6 +8,8 @@ import OverlayMenu from "@/components/overlay-menu";
 import Navbar from "@/components/navbar";
 import useOverlayMenu from "@/hooks/overlay-menu-hook";
 import RandomMovieHeader from "@/components/random-movie-header";
+import MoviesList from "@/components/movies-list";
+import useGetMovies from "@/hooks/get-movies-hook";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,6 +22,8 @@ export default function Home() {
         visibleAccount,
         toggleAccountMenu,
     } = useOverlayMenu();
+    const {data} = useGetMovies();
+
 
     return (
         <>
@@ -30,6 +34,9 @@ export default function Home() {
             <main className={`${inter.className} relative`}>
                 <Navbar toggleBrowseMenu={toggleBrowseMenu} toggleAccountMenu={toggleAccountMenu} />
                 <RandomMovieHeader />
+                <div className={"flex flex-col gap-48"}>
+                    <MoviesList movies={data?.movies} title={"Trending Now"} />
+                </div>
             </main>
             <OverlayMenu visible={visibleBrowse} toggleMenu={toggleBrowseMenu} navItems={navItems}/>
             <OverlayMenu visible={visibleAccount} toggleMenu={toggleAccountMenu} navItems={accountItems} account={user?.name || user?.user?.name}/>

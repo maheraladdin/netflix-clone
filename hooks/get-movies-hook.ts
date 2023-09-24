@@ -1,9 +1,9 @@
 import useSWR from "swr";
 
-type getRandomMovieHookType = {
+type getMoviesHookType = {
     data: {
         message: string;
-        randomMovie: {
+        movies: {
             id: string;
             title: string;
             description: string;
@@ -11,22 +11,22 @@ type getRandomMovieHookType = {
             thumbnailUrl: string;
             genre: string;
             duration: string;
-        }
+        }[]
     },
     error: any,
     isLoading: boolean,
 }
 
-export default function getRandomMovieHook(): getRandomMovieHookType {
-    const { data, error, isLoading } = useSWR("/api/movies/random",{
-        revalidateIfStale: false,
+export default function useGetMovies(): getMoviesHookType {
+    const {data, error, isLoading} = useSWR("/api/movies",{
         revalidateOnFocus: false,
         revalidateOnReconnect: false,
+        revalidateIfStale: false,
     });
 
     return {
         data,
         error,
         isLoading,
-    }
+    };
 }
