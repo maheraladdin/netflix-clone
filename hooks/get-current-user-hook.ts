@@ -7,7 +7,7 @@ export default function useGetCurrentUser() {
         error,
         isLoading,
         mutate
-    } = useSWR("/api/auth/current", fetcher);
+    } = useSWR("/api/user/current", fetcher);
     return {
         data,
         isLoading,

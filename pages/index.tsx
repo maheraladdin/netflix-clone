@@ -7,7 +7,7 @@ import {navItems, accountItems} from "@/lib/data";
 import OverlayMenu from "@/components/overlay-menu";
 import Navbar from "@/components/navbar";
 import useOverlayMenu from "@/hooks/overlay-menu-hook";
-import BillBoard from "@/components/bill-board";
+import RandomMovieHeader from "@/components/random-movie-header";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,7 +29,7 @@ export default function Home() {
             </Head>
             <main className={`${inter.className} relative`}>
                 <Navbar toggleBrowseMenu={toggleBrowseMenu} toggleAccountMenu={toggleAccountMenu} />
-                <BillBoard />
+                <RandomMovieHeader />
             </main>
             <OverlayMenu visible={visibleBrowse} toggleMenu={toggleBrowseMenu} navItems={navItems}/>
             <OverlayMenu visible={visibleAccount} toggleMenu={toggleAccountMenu} navItems={accountItems} account={user?.name || user?.user?.name}/>

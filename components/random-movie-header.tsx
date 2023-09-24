@@ -1,7 +1,22 @@
-import useBillBoard from "@/hooks/bill-board-hook";
+import useGetRandomMovie from "@/hooks/get-random-movie-hook";
 
-export default function BillBoard() {
-    const {data} = useBillBoard();
+type RandomMovieHeaderProps = {
+    data: {
+        message: string;
+        randomMovie: {
+            id: string;
+            title: string;
+            description: string;
+            videoUrl: string;
+            thumbnailUrl: string;
+            genre: string;
+            duration: string;
+        }
+    }
+}
+
+export default function RandomMovieHeader() {
+    const {data}: RandomMovieHeaderProps = useGetRandomMovie();
     return (
         <header className={"container px-5 mx-auto h-screen"}>
             <video
@@ -9,8 +24,9 @@ export default function BillBoard() {
                 muted
                 loop
                 className={"absolute left-0 object-cover brightness-50 w-screen h-screen"}
-                poster={data?.randomMovie?.posterUrl}
-                src={data?.randomMovie?.videoUrl}>
+                poster={data?.randomMovie?.thumbnailUrl}
+                src={data?.randomMovie?.videoUrl}
+                >
             </video>
             <div className={`fixed flex flex-col gap-6 top-1/4 sm:top-1/3 text-white select-none`}>
                 <p className={"text-5xl w-[50%]"}>{data?.randomMovie?.title}</p>

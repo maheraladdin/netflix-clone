@@ -56,7 +56,7 @@ export default function useAuthForm() {
 
     const signUpHandler = useCallback(async () => {
         try {
-            await axios.post("/api/auth/register", {
+            await axios.post("/api/user/register", {
                 ...getValues()
             });
             await signInHandler();
