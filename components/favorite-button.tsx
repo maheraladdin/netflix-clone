@@ -9,24 +9,32 @@ type FavoriteButtonProps = {
 
 export default function FavoriteButton({movieId}: FavoriteButtonProps) {
     const {mutate: mutateFavorites} = useGetFavorites();
-    const {data: currentUser, mutate: mutateCurrentUser} = useGetCurrentUser();
+    const {data, mutate: mutateCurrentUser} = useGetCurrentUser();
+
+    const currentUser = data?.user;
 
     const isFavorite = useMemo(() => {
-        if (!currentUser || !currentUser.favoriteMovies) return false;
-        return currentUser.favoriteMovies.includes(movieId);
+        const favoriteIds = data.user?.favoriteIds || [];
+        return favoriteIds.includes(movieId);
     },[currentUser, movieId]);
 
     const toggleFavorite = useCallback(async () => {
         let response;
         if (isFavorite) {
-            response = await axios.delete(`/api/movies/favorites`, {data: movieId});
+            response = await axios.delete(`/api/movies/favorites`, {data: {movieId}});
         } else {
             response = await axios.post(`/api/movies/favorites`, {movieId});
         }
-        await mutateCurrentUser(response.data.user);
+        const favoriteIds = response.data.user.favoriteIds;
+        await mutateCurrentUser({
+            ...currentUser,
+            favoriteIds
+        });
         await mutateFavorites();
 
-    },[movieId, isFavorite, mutateCurrentUser, mutateFavorites]);
+    },[movieId, isFavorite, currentUser, mutateCurrentUser, mutateFavorites]);
+
+    const Icon = isFavorite ? AiOutlineCheck : AiOutlinePlus;
 
     return (
         <div
@@ -34,12 +42,7 @@ export default function FavoriteButton({movieId}: FavoriteButtonProps) {
             role={"button"}
             className={"border-white border-2 text-white hover:text-neutral-300 hover:border-neutral-300 rounded-full p-2"}
         >
-            {
-                isFavorite ?
-                    <AiOutlineCheck size={18} />
-                    :
-                    <AiOutlinePlus size={18} />
-            }
+            <Icon size={18} />
         </div>
     )
 }

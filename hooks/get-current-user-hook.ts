@@ -6,7 +6,11 @@ export default function useGetCurrentUser() {
         error,
         isLoading,
         mutate
-    } = useSWR("/api/user/current");
+    } = useSWR("/api/user/current", {
+        revalidateIfStale: false,
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false
+    });
     return {
         data,
         isLoading,
