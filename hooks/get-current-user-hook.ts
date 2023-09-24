@@ -1,5 +1,4 @@
 import useSWR from "swr";
-import fetcher from "@/lib/fetcher";
 
 export default function useGetCurrentUser() {
     const {
@@ -7,7 +6,7 @@ export default function useGetCurrentUser() {
         error,
         isLoading,
         mutate
-    } = useSWR("/api/user/current", fetcher);
+    } = useSWR("/api/user/current");
     return {
         data,
         isLoading,

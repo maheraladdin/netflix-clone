@@ -1,8 +1,7 @@
 import useSWR from "swr";
-import fetcher from "@/lib/fetcher";
 
 export default function getRandomMovieHook() {
-    const { data, error, isLoading } = useSWR("/api/movies/random", fetcher,{
+    const { data, error, isLoading } = useSWR("/api/movies/random",{
         revalidateIfStale: false,
         revalidateOnFocus: false,
         revalidateOnReconnect: false,
