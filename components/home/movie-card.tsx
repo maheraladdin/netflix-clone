@@ -3,7 +3,7 @@ import {BsFillPlayFill} from "react-icons/bs";
 import {BiInfoCircle} from "react-icons/bi";
 import FavoriteButton from "@/components/home/favorite-button";
 import {useRouter} from "next/router";
-import useInfoModal from "@/hooks/use-info-modal-hook";
+import useInfoModal from "@/hooks/info-modal-hook";
 import {useCallback} from "react";
 
 type MovieCardProps = {

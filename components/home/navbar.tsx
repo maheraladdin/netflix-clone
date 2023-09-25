@@ -1,7 +1,7 @@
 import Image from "next/image";
 import {navItems} from "@/lib/data";
 import {AiOutlineBell, AiOutlineSearch} from "react-icons/ai";
-import {useEffect, useState} from "react";
+import useNavbarBackgroundOpacity from "@/hooks/navbar-background-opacity-hook";
 
 type NavbarProps = {
     toggleBrowseMenu: () => void;
@@ -9,17 +9,7 @@ type NavbarProps = {
 }
 
 export default function Navbar({toggleBrowseMenu, toggleAccountMenu}: NavbarProps) {
-    const [pageYOffset, setPageYOffset] = useState(0);
-    useEffect(() => {
-        window.addEventListener("scroll", () => {
-            setPageYOffset(window.pageYOffset);
-        })
-        return () => {
-            window.removeEventListener("scroll", () => {
-                setPageYOffset(window.pageYOffset);
-            })
-        }
-    }, []);
+    const {pageYOffset} = useNavbarBackgroundOpacity();
     return (
         <nav className={`fixed top-0 w-screen py-6 bg-zinc-900 z-10 transition-all duration-300 ${pageYOffset >= 66 ? "bg-opacity-80" : "bg-opacity-0"}`}>
             <div className={"container mx-auto px-5 flex justify-between"}>

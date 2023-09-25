@@ -56,7 +56,7 @@ export default function useAuthForm() {
 
     const signUpHandler = useCallback(async () => {
         try {
-            await axios.post("/api/user/register", {
+            await axios.post("https://vercel.com/maheraladdin/netflix-clone/Agsu5AEPuYbCVYu9ihVo4qBaHUeC/api/user/register", {
                 ...getValues()
             });
             await signInHandler();

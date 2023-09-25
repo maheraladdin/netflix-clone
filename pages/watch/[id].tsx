@@ -1,4 +1,4 @@
-import useGetMovieById from "@/hooks/use-get-movie-by-id-hook";
+import useGetMovieById from "@/hooks/get-movie-by-id-hook";
 import {useRouter} from "next/router";
 import {AiOutlineArrowLeft} from "react-icons/ai";
 

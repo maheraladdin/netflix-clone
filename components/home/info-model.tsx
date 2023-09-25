@@ -2,8 +2,8 @@ import {useCallback} from "react";
 import {AiOutlineClose} from "react-icons/ai";
 import PlayButton from "@/components/home/play-button";
 import FavoriteButton from "@/components/home/favorite-button";
-import useInfoModal from "@/hooks/use-info-modal-hook";
-import useGetMovieById from "@/hooks/use-get-movie-by-id-hook";
+import useInfoModal from "@/hooks/info-modal-hook";
+import useGetMovieById from "@/hooks/get-movie-by-id-hook";
 
 
 export default function InfoModel() {
