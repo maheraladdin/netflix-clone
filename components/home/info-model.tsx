@@ -11,9 +11,7 @@ export default function InfoModel() {
     const {data} = useGetMovieById(movieId);
 
     const handleClose = useCallback(() => {
-        setTimeout(() => {
-            close();
-        }, 300);
+        close();
     },[close]);
 
     if(!isOpen) return null;
