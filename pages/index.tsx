@@ -11,6 +11,7 @@ import RandomMovieHeader from "@/components/home/random-movie-header";
 import MoviesList from "@/components/home/movies-list";
 import useGetMovies from "@/hooks/get-movies-hook";
 import useGetFavorites from "@/hooks/get-favorites-hook";
+import InfoModel from "@/components/home/info-model";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,6 +30,9 @@ export default function Home() {
 
     return (
         <>
+            <InfoModel />
+            <OverlayMenu visible={visibleBrowse} toggleMenu={toggleBrowseMenu} navItems={navItems}/>
+            <OverlayMenu visible={visibleAccount} toggleMenu={toggleAccountMenu} navItems={accountItems} account={user?.name || user?.user?.name}/>
             <Head>
                 <title>Netflix Clone</title>
                 <meta name={"description"} content={"Netflix Clone"}/>
@@ -41,8 +45,6 @@ export default function Home() {
                     <MoviesList movies={favorites?.favorites} title={"Favorite Movies"} />
                 </div>
             </main>
-            <OverlayMenu visible={visibleBrowse} toggleMenu={toggleBrowseMenu} navItems={navItems}/>
-            <OverlayMenu visible={visibleAccount} toggleMenu={toggleAccountMenu} navItems={accountItems} account={user?.name || user?.user?.name}/>
         </>
     )
 }

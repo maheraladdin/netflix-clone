@@ -1,8 +1,14 @@
 import useGetRandomMovie from "@/hooks/get-random-movie-hook";
 import PlayButton from "@/components/home/play-button";
+import useInfoModal from "@/hooks/use-info-modal-hook";
+import {useCallback} from "react";
 
 export default function RandomMovieHeader() {
     const {data} = useGetRandomMovie();
+    const {open} = useInfoModal();
+    const handleOpen = useCallback(() => {
+        open(data?.randomMovie?.id);
+    }, [open, data?.randomMovie?.id]);
     return (
         <>
             <video
@@ -20,7 +26,10 @@ export default function RandomMovieHeader() {
                     <p className={"text-xl w-[90%] sm:w-3/5"}>{data?.randomMovie?.description}</p>
                     <div className={"flex gap-4"}>
                         <PlayButton movieId={data?.randomMovie?.id} />
-                        <button className={"w-fit px-4 py-2 bg-white bg-opacity-30 rounded-xl hover:bg-opacity-20 transition-all"}>
+                        <button
+                            className={"w-fit px-4 py-2 bg-white bg-opacity-30 rounded-xl hover:bg-opacity-20 transition-all"}
+                            onClick={handleOpen}
+                        >
                             More Info
                         </button>
                     </div>
