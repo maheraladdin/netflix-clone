@@ -19,7 +19,7 @@ const schema = yup.object({
     password: yup.string().min(8).required()
 });
 
-const callbackUrl = "https://netflix-clone-delta-roan.vercel.app/profiles";
+const callbackUrl = "/profiles";
 
 export default function useAuthForm() {
     const router = useRouter();
@@ -56,7 +56,7 @@ export default function useAuthForm() {
 
     const signUpHandler = useCallback(async () => {
         try {
-            await axios.post("https://netflix-clone-delta-roan.vercel.app/api/user/register", {
+            await axios.post("/api/user/register", {
                 ...getValues()
             });
             await signInHandler();
