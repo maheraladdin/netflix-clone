@@ -16,7 +16,7 @@ type BrowseMenuProps = {
 
 export default function OverlayMenu({visible, toggleMenu, navItems,account}: BrowseMenuProps): ReactElement {
     return (
-        <div className={`fixed top-0 text-xl w-screen lg:max-w-xs h-screen bg-black bg-opacity-80 flex justify-center items-center lg:justify-start lg:items-start lg:p-6 z-10 transition ${!visible && "hidden"}`}>
+        <div className={`fixed top-0 text-xl w-screen lg:max-w-xs h-screen bg-black bg-opacity-80 flex justify-center items-center lg:justify-start lg:items-start lg:p-6 z-50 transition ${!visible && "hidden"}`}>
             <RxCross2 onClick={toggleMenu} className={"absolute top-6 right-4 text-2xl text-white cursor-pointer"}/>
             <div className={"flex flex-col gap-8"}>
                 {account &&
