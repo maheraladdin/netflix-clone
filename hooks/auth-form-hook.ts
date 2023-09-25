@@ -19,7 +19,7 @@ const schema = yup.object({
     password: yup.string().min(8).required()
 });
 
-const callbackUrl = "/profiles";
+const callbackUrl = "https://vercel.com/maheraladdin/netflix-clone/Agsu5AEPuYbCVYu9ihVo4qBaHUeC/profiles";
 
 export default function useAuthForm() {
     const router = useRouter();
