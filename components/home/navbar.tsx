@@ -28,9 +28,9 @@ export default function Navbar({toggleBrowseMenu, toggleAccountMenu}: NavbarProp
                         </div>
                     </div>
                 </div>
-                <div className={`flex items-center gap-x-3 sm:gap-x-6`}>
-                    <AiOutlineSearch role={"button"} className={`nav-item text-2xl`}/>
-                    <AiOutlineBell role={"button"} className={`nav-item text-2xl`}/>
+                <div className={`flex items-center gap-x-3 sm:gap-x-6 w-fit`}>
+                    <AiOutlineSearch role={"button"} className={`nav-item text-2xl w-fit`}/>
+                    <AiOutlineBell role={"button"} className={`nav-item text-2xl w-fit`}/>
                     <Image onClick={toggleAccountMenu} role={"button"} src={'/images/default-blue.png'} alt={"profile-photo"} width={25} height={25}/>
                 </div>
             </div>
