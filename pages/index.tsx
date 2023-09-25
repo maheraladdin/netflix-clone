@@ -4,11 +4,11 @@ import {getSession} from "next-auth/react";
 import {NextPageContext} from "next";
 import useGetCurrentUser from "@/hooks/get-current-user-hook";
 import {navItems, accountItems} from "@/lib/data";
-import OverlayMenu from "@/components/overlay-menu";
-import Navbar from "@/components/navbar";
+import OverlayMenu from "@/components/home/overlay-menu";
+import Navbar from "@/components/home/navbar";
 import useOverlayMenu from "@/hooks/overlay-menu-hook";
-import RandomMovieHeader from "@/components/random-movie-header";
-import MoviesList from "@/components/movies-list";
+import RandomMovieHeader from "@/components/home/random-movie-header";
+import MoviesList from "@/components/home/movies-list";
 import useGetMovies from "@/hooks/get-movies-hook";
 import useGetFavorites from "@/hooks/get-favorites-hook";
 

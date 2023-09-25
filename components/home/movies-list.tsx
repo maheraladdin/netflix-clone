@@ -1,4 +1,4 @@
-import MovieCard from "@/components/movie-card";
+import MovieCard from "@/components/home/movie-card";
 
 type MoviesListProps = {
     title: string,
@@ -14,7 +14,7 @@ type MoviesListProps = {
 }
 
 export default function MoviesList({movies, title}: MoviesListProps) {
-    if(!movies) return null;
+    if(!movies || movies.length === 0) return null;
 
     return (
         <section className={"flex flex-col gap-8 container mx-auto px-5 py-10"}>

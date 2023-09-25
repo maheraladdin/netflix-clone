@@ -1,6 +1,7 @@
 import Image from "next/image";
 import {BsFillPlayFill} from "react-icons/bs";
-import FavoriteButton from "@/components/favorite-button";
+import FavoriteButton from "@/components/home/favorite-button";
+import {useRouter} from "next/router";
 
 type MovieCardProps = {
     movie: {
@@ -15,6 +16,7 @@ type MovieCardProps = {
 }
 
 export default function MovieCard({movie}: MovieCardProps) {
+    const router = useRouter();
     return (
         <div role={"button"} className={"group bg-zinc-900 col-span relative min-h-[12vw] h-[160px]"}>
             <Image className={"object-cover transition-all duration-300 shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 w-full h-full"} src={movie.thumbnailUrl} alt={movie.title} width={300} height={300} />
@@ -22,18 +24,21 @@ export default function MovieCard({movie}: MovieCardProps) {
                 <Image className={"object-cover rounded-t-md w-full h-full z-10"} src={movie.thumbnailUrl} alt={movie.title} width={300} height={300} />
                 <div className={"absolute flex flex-col gap-2 p-2 top-full bg-zinc-800 w-full h-fit -z-10 rounded-b-md"}>
                     <div className={"flex items-center gap-2"}>
-                        <div className={"bg-white text-xl hover:bg-neutral-300 rounded-full p-2"}>
+                        <div
+                            onClick={() => router.push(`/watch/${movie.id}`)}
+                            className={"bg-white text-xl hover:bg-neutral-300 rounded-full p-2"}
+                        >
                             <BsFillPlayFill />
                         </div>
                         <FavoriteButton movieId={movie.id} />
                     </div>
-                    <p className={"text-green-400 font-semibold m-0"}>
+                    <p className={"text-green-400 font-semibold m-0 select-none"}>
                         New <span className={"text-white"}>2023</span>
                     </p>
-                    <p className={"text-white font-semibold text-sm m-0"}>
+                    <p className={"text-white font-semibold text-sm m-0 select-none"}>
                         {movie.duration}
                     </p>
-                    <p className={"text-white font-semibold text-sm m-0"}>
+                    <p className={"text-white font-semibold text-sm m-0 select-none"}>
                         {movie.genre}
                     </p>
                 </div>

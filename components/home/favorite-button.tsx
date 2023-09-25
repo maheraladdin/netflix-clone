@@ -14,7 +14,7 @@ export default function FavoriteButton({movieId}: FavoriteButtonProps) {
     const currentUser = data?.user;
 
     const isFavorite = useMemo(() => {
-        const favoriteIds = data.user?.favoriteIds || [];
+        const favoriteIds = data?.user?.favoriteIds || [];
         return favoriteIds.includes(movieId);
     },[currentUser, movieId]);
 

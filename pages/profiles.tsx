@@ -2,7 +2,7 @@ import {NextPageContext} from "next";
 import {getSession} from "next-auth/react";
 import Image from "next/image";
 import useGetCurrentUser from "@/hooks/get-current-user-hook";
-import {useRouter} from "next/navigation";
+import {useRouter} from "next/router";
 
 
 export default function Profiles() {
