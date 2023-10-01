@@ -1,4 +1,4 @@
-import MovieCard from "@/clint-side/components/home/movie-card";
+import MovieCard from "@/components/home/movie-card";
 
 type MoviesListProps = {
     title: string,

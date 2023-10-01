@@ -1,9 +1,9 @@
 import serverAuth from "@/server-side/lib/server-auth";
-import prismaDb from "@/clint-side/lib/prisma-db";
+import prismaDb from "@/lib/prisma-db";
 import {NextApiRequest, NextApiResponse} from "next";
 import nextRequestWrapper from "@/server-side/lib/next-request-wrapper";
 import ServerAuth from "@/server-side/lib/server-auth";
-import PrismaDb from "@/clint-side/lib/prisma-db";
+import PrismaDb from "@/lib/prisma-db";
 
 
 export const getMovies = nextRequestWrapper(async (req: NextApiRequest,res: NextApiResponse) => {

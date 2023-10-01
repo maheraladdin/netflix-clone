@@ -1,7 +1,7 @@
 import nextRequestWrapper from "@/server-side/lib/next-request-wrapper";
 import {NextApiRequest, NextApiResponse} from "next";
 import serverAuth from "@/server-side/lib/server-auth";
-import prismaDb from "@/clint-side/lib/prisma-db";
+import prismaDb from "@/lib/prisma-db";
 import bcrypt from "bcrypt";
 
 export const getCurrentUser = nextRequestWrapper(async (req: NextApiRequest, res: NextApiResponse) => {

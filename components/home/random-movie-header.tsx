@@ -1,6 +1,6 @@
-import useGetRandomMovie from "@/clint-side/hooks/get-random-movie-hook";
-import PlayButton from "@/clint-side/components/home/play-button";
-import useInfoModal from "@/clint-side/hooks/info-modal-hook";
+import useGetRandomMovie from "@/hooks/get-random-movie-hook";
+import PlayButton from "@/components/home/play-button";
+import useInfoModal from "@/hooks/info-modal-hook";
 import {useCallback} from "react";
 
 export default function RandomMovieHeader() {

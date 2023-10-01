@@ -1,4 +1,4 @@
-import useFavoriteButton from "@/clint-side/hooks/favorite-button-hook";
+import useFavoriteButton from "@/hooks/favorite-button-hook";
 type FavoriteButtonProps = {
     movieId: string;
 }

@@ -1,5 +1,5 @@
-import useGetFavorites from "@/clint-side/hooks/get-favorites-hook";
-import useGetCurrentUser from "@/clint-side/hooks/get-current-user-hook";
+import useGetFavorites from "@/hooks/get-favorites-hook";
+import useGetCurrentUser from "@/hooks/get-current-user-hook";
 import {useCallback, useMemo} from "react";
 import axios from "axios";
 import {AiOutlineCheck, AiOutlinePlus} from "react-icons/ai";
