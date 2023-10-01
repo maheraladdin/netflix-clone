@@ -1,5 +1,5 @@
 import {NextApiRequest, NextApiResponse} from "next";
-import PrismaDb from "@/lib/prisma-db";
+import PrismaDb from "@/clint-side/lib/prisma-db";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import {getServerSession} from "next-auth";
 

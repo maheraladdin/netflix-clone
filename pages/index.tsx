@@ -2,16 +2,16 @@ import { Inter } from 'next/font/google'
 import Head from "next/head";
 import {getSession} from "next-auth/react";
 import {NextPageContext} from "next";
-import useGetCurrentUser from "@/hooks/get-current-user-hook";
-import {navItems, accountItems} from "@/lib/data";
-import OverlayMenu from "@/components/home/overlay-menu";
-import Navbar from "@/components/home/navbar";
-import useOverlayMenu from "@/hooks/overlay-menu-hook";
-import RandomMovieHeader from "@/components/home/random-movie-header";
-import MoviesList from "@/components/home/movies-list";
-import useGetMovies from "@/hooks/get-movies-hook";
-import useGetFavorites from "@/hooks/get-favorites-hook";
-import InfoModel from "@/components/home/info-model";
+import useGetCurrentUser from "@/clint-side/hooks/get-current-user-hook";
+import {navItems, accountItems} from "@/clint-side/lib/data";
+import OverlayMenu from "@/clint-side/components/home/overlay-menu";
+import Navbar from "@/clint-side/components/home/navbar";
+import useOverlayMenu from "@/clint-side/hooks/overlay-menu-hook";
+import RandomMovieHeader from "@/clint-side/components/home/random-movie-header";
+import MoviesList from "@/clint-side/components/home/movies-list";
+import useGetMovies from "@/clint-side/hooks/get-movies-hook";
+import useGetFavorites from "@/clint-side/hooks/get-favorites-hook";
+import InfoModel from "@/clint-side/components/home/info-model";
 
 const inter = Inter({ subsets: ['latin'] })
 

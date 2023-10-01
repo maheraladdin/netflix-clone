@@ -2,7 +2,7 @@ import Image from "next/image";
 // import {DevTool} from "@hookform/devtools";
 import {FcGoogle} from "react-icons/fc";
 import {FaFacebook} from "react-icons/fa";
-import useAuthForm from "@/hooks/auth-form-hook";
+import useAuthForm from "@/clint-side/hooks/auth-form-hook";
 
 
 export default function Auth() {

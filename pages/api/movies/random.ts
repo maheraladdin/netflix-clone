@@ -1,22 +1,9 @@
 import {NextApiRequest, NextApiResponse} from "next";
+import {getRandomMovie} from "@/server-side/controllers/movies-controller";
+import {createRouter} from "next-connect";
 
-import prismaDb from "@/lib/prisma-db";
-import serverAuth from "@/lib/server-auth";
+const router = createRouter<NextApiRequest, NextApiResponse>();
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method !== "GET") return res.status(405).json({message: "Method not allowed"});
+router.get(getRandomMovie);
 
-    try {
-        await serverAuth(req,res);
-        const numberOfMovies = await prismaDb.movie.count();
-        const randomMovie = await prismaDb.movie.findFirst({
-            skip: Math.floor(Math.random() * numberOfMovies)
-        });
-        return res.status(200).json({
-            randomMovie,
-            message: "Random movie generated successfully"
-        });
-    } catch (e) {
-        return res.status(400).json({error: e});
-    }
-}
+export default router.handler();

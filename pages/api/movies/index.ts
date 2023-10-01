@@ -1,18 +1,9 @@
 import {NextApiRequest, NextApiResponse} from "next";
-import PrismaDb from "@/lib/prisma-db";
-import ServerAuth from "@/lib/server-auth";
+import {getMovies} from "@/server-side/controllers/movies-controller";
+import {createRouter} from "next-connect";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if(req.method !== "GET") return res.status(405).json({message: "Method not allowed"});
+const router = createRouter<NextApiRequest, NextApiResponse>();
 
-    try {
-        await ServerAuth(req,res);
-        const movies = await PrismaDb.movie.findMany({});
-        res.status(200).json({
-            movies,
-            message: "Movies fetched successfully"
-        });
-    } catch (e) {
-        res.status(400).json({error: e});
-    }
-}
+router.get(getMovies);
+
+export default router.handler();

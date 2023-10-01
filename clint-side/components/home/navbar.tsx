@@ -1,7 +1,7 @@
 import Image from "next/image";
-import {navItems} from "@/lib/data";
+import {navItems} from "@/clint-side/lib/data";
 import {AiOutlineBell, AiOutlineSearch} from "react-icons/ai";
-import useNavbarBackgroundOpacity from "@/hooks/navbar-background-opacity-hook";
+import useNavbarBackgroundOpacity from "@/clint-side/hooks/navbar-background-opacity-hook";
 
 type NavbarProps = {
     toggleBrowseMenu: () => void;

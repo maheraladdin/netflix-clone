@@ -1,7 +1,7 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import {SWRConfig} from "swr";
-import fetcher from "@/lib/fetcher";
+import fetcher from "@/clint-side/lib/fetcher";
 import {SessionProvider} from "next-auth/react";
 
 export default function App({ Component, pageProps }: AppProps) {
