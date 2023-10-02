@@ -7,7 +7,7 @@ import bcrypt from "bcrypt";
 export const getCurrentUser = nextRequestWrapper(async (req: NextApiRequest, res: NextApiResponse) => {
     const {user} = await serverAuth(req,res);
     res.status(200).json({user});
-})
+}, 401, "Unauthorized");
 
 export const registerUser = nextRequestWrapper(async (req: NextApiRequest, res: NextApiResponse) => {
     const {name, email, password} = req.body;
@@ -35,4 +35,4 @@ export const registerUser = nextRequestWrapper(async (req: NextApiRequest, res: 
     });
 
     res.status(201).json({message: "User created successfully", user});
-});
+}, 422, "Invalid input");

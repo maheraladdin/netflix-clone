@@ -13,7 +13,7 @@ export const getMovies = nextRequestWrapper(async (req: NextApiRequest,res: Next
         movies,
         message: "Movies fetched successfully"
     });
-});
+}, 400, "Error fetching movies");
 
 export const getMovieById = nextRequestWrapper(async (req: NextApiRequest,res: NextApiResponse) => {
     try {
@@ -32,7 +32,7 @@ export const getMovieById = nextRequestWrapper(async (req: NextApiRequest,res: N
     } catch (e) {
         return res.status(400).json({error: e});
     }
-});
+}, 400, "Error fetching movie");
 
 export const getRandomMovie = nextRequestWrapper(async (req: NextApiRequest,res: NextApiResponse) => {
     await serverAuth(req,res);
@@ -44,5 +44,5 @@ export const getRandomMovie = nextRequestWrapper(async (req: NextApiRequest,res:
         randomMovie,
         message: "Random movie generated successfully"
     });
-});
+}, 400, "Error fetching random movie");
 

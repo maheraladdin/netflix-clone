@@ -17,7 +17,7 @@ export const getFavorites = nextRequestWrapper(async (req: NextApiRequest,res: N
         favorites,
         message: "Favorites fetched successfully"
     });
-});
+}, 401, "You must be logged in to view favorites");
 
 export const addToFavorites = nextRequestWrapper(async (req: NextApiRequest,res: NextApiResponse) => {
     const {user} = await serverAuth(req,res);
@@ -42,7 +42,7 @@ export const addToFavorites = nextRequestWrapper(async (req: NextApiRequest,res:
         user: UpdatedUser,
         message: "Movie added to favorites successfully"
     });
-});
+}, 401, "You must be logged in to add to favorites");
 
 export const removeFromFavorites = nextRequestWrapper(async (req: NextApiRequest,res: NextApiResponse) => {
     const {user} = await serverAuth(req,res);
@@ -67,4 +67,4 @@ export const removeFromFavorites = nextRequestWrapper(async (req: NextApiRequest
         user: UpdatedUser,
         message: "Movie removed from favorites successfully"
     });
-});
+}, 401, "You must be logged in to remove from favorites");
